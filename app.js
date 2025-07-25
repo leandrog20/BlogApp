@@ -13,7 +13,7 @@
     import usuarios from './routes/usuario.js';
     import passport from 'passport';
     import PassportConfig from './config/auth.js'; // Importando a configuração do Passport
-
+    import db from './config/db.js';
 
     const app = express();
     const __filename = fileURLToPath(import.meta.url);
@@ -54,7 +54,7 @@
     app.set('view engine', 'handlebars');
 
     // Mongoose
-    mongoose.connect('mongodb://localhost/blogapp').then(() => {
+    mongoose.connect(db.mongoURI).then(() => {
         console.log('Conectado ao MongoDB');
     
        }).catch((err) => {
